@@ -38,9 +38,5 @@ public class JournalEntryService {
         return repository.getById(id);
     }
 
-    @CacheEvict(value = "journalCache", key = "#id")
-    public void deleteById(String id) {
 
-        // Later implement delete in HBase
-    }
 }
