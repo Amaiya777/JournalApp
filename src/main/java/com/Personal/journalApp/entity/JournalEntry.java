@@ -4,17 +4,17 @@ import java.time.LocalDateTime;
 
 public class JournalEntry {
 
-    private int id;
+    private String id;
     private String title;
     private String content;
     private LocalDateTime date;
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

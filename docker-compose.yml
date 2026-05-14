@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  hbase:
+    image: harisekhon/hbase
+    container_name: hbase
+    ports:
+      - "16000:16000"
+      - "16010:16010"
+      - "16020:16020"
+      - "2181:2181"
+
+  journalapp:
+    build: .
+    container_name: journalapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - hbase
+    environment:
+      HBASE_ZOOKEEPER_QUORUM: hbase
