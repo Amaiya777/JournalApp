@@ -37,6 +37,10 @@ public class HBaseRepository {
                 Bytes.toBytes("date"),
                 Bytes.toBytes(entry.getDate().toString()));
 
+        put.addColumn(Bytes.toBytes(CF),
+                Bytes.toBytes("views"),
+                Bytes.toBytes(String.valueOf(entry.getViews())));
+
         table.put(put);
 
         table.close();
@@ -72,6 +76,13 @@ public class HBaseRepository {
                 Bytes.toString(
                         result.getValue(Bytes.toBytes(CF),
                                 Bytes.toBytes("date"))
+                )
+        ));
+
+        entry.setViews(Integer.parseInt(
+                Bytes.toString(
+                        result.getValue(Bytes.toBytes(CF),
+                                Bytes.toBytes("views"))
                 )
         ));
 

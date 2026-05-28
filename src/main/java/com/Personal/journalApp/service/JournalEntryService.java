@@ -25,6 +25,8 @@ public class JournalEntryService {
 
         entry.setDate(LocalDateTime.now());
 
+        entry.setViews(0);
+
         repository.save(entry);
 
         return entry;
@@ -35,8 +37,16 @@ public class JournalEntryService {
 
         System.out.println("Fetching from HBase...");
 
-        return repository.getById(id);
-    }
+        JournalEntry entry = repository.getById(id);
 
+        if(entry != null) {
+
+            entry.setViews(entry.getViews() + 1);
+
+            repository.save(entry);
+        }
+
+        return entry;
+    }
 
 }

@@ -10,12 +10,33 @@ services:
       - "16020:16020"
       - "2181:2181"
 
-  journalapp:
+  journalapp1:
     build: .
-    container_name: journalapp
+    container_name: journalapp1
     ports:
       - "8080:8080"
     depends_on:
       - hbase
     environment:
       HBASE_ZOOKEEPER_QUORUM: hbase
+
+  journalapp2:
+    build: .
+    container_name: journalapp2
+    ports:
+      - "8081:8080"
+    depends_on:
+      - hbase
+    environment:
+      HBASE_ZOOKEEPER_QUORUM: hbase
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8090:80"
+    depends_on:
+      - journalapp1
+      - journalapp2
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf

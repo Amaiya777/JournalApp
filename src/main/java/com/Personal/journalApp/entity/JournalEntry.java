@@ -7,8 +7,18 @@ public class JournalEntry {
     private String id;
     private String title;
     private String content;
+    private int views;
     private LocalDateTime date;
+    // not local date and time.
 
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
 
     public String getId() {
         return id;
