@@ -32,7 +32,7 @@ public class JournalEntryService {
         return entry;
     }
 
-    @Cacheable(value = "journalCache", key = "#id")
+    // @Cacheable(value = "journalCache", key = "#id")
     public JournalEntry getById(String id) throws IOException {
 
         System.out.println("Fetching from HBase...");

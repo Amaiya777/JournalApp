@@ -7,10 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/journal")
 public class JournalEntryController {
+
+        public static int app_id = new Random().nextInt(9999);
+
 
     @Autowired
     private JournalEntryService service;
@@ -31,7 +35,7 @@ public class JournalEntryController {
     ) throws IOException {
 
         JournalEntry entry = service.getById(id);
-
+        System.out.println(app_id + "app id is printed here");
         if(entry == null) {
             return ResponseEntity.notFound().build();
         }
