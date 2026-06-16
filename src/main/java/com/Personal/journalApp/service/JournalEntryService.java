@@ -18,6 +18,9 @@ public class JournalEntryService {
     @Autowired
     private HBaseRepository repository;
 
+    @Autowired
+    private WebSocketPublisher publisher;
+
     @CachePut(value = "journalCache", key = "#result.id")
     public JournalEntry createEntry(JournalEntry entry) throws IOException {
 
@@ -44,6 +47,12 @@ public class JournalEntryService {
             entry.setViews(entry.getViews() + 1);
 
             repository.save(entry);
+
+
+            publisher.publishViewCount(
+                    entry.getId(),
+                    entry.getViews()
+            );
         }
 
         return entry;
