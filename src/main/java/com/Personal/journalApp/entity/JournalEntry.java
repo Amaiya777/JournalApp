@@ -1,23 +1,23 @@
 package com.Personal.journalApp.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class JournalEntry {
+public class JournalEntry implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String id;
+
     private String title;
+
     private String content;
+
     private int views;
+
     private LocalDateTime date;
-    // not local date and time.
 
-
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
+    public JournalEntry() {
     }
 
     public String getId() {
@@ -28,7 +28,6 @@ public class JournalEntry {
         this.id = id;
     }
 
-
     public String getTitle() {
         return title;
     }
@@ -36,7 +35,6 @@ public class JournalEntry {
     public void setTitle(String title) {
         this.title = title;
     }
-
 
     public String getContent() {
         return content;
@@ -46,6 +44,13 @@ public class JournalEntry {
         this.content = content;
     }
 
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
 
     public LocalDateTime getDate() {
         return date;
@@ -55,13 +60,13 @@ public class JournalEntry {
         this.date = date;
     }
 
-
     @Override
     public String toString() {
         return "JournalEntry{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
+                ", views=" + views +
                 ", date=" + date +
                 '}';
     }

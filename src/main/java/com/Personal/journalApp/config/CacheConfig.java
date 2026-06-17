@@ -1,5 +1,8 @@
 package com.Personal.journalApp.config;
 
+/*
+
+
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -27,3 +30,6 @@ public class CacheConfig {
         return manager;
     }
 }
+
+
+ */

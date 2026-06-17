@@ -10,6 +10,12 @@ services:
       - "16020:16020"
       - "2181:2181"
 
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+
   journalapp1:
     build: .
     container_name: journalapp1
@@ -17,6 +23,7 @@ services:
       - "8080:8080"
     depends_on:
       - hbase
+      - redis
     environment:
       HBASE_ZOOKEEPER_QUORUM: hbase
 
@@ -27,6 +34,7 @@ services:
       - "8081:8080"
     depends_on:
       - hbase
+      - redis
     environment:
       HBASE_ZOOKEEPER_QUORUM: hbase
 
